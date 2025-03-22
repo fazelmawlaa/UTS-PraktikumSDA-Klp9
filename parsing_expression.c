@@ -92,3 +92,22 @@ void infixToPostfix(char *infix, char *postfix) {
     postfix[j] = '\0';
 }
 
+void postfixToInfix(char *postfix, char *infix) {
+    Stack s;
+    init(&s);
+    for (int i = 0; postfix[i] != '\0'; i++) {
+        char token = postfix[i];
+        if (isalnum(token)) {
+            char operand[2] = {token, '\0'};
+            push(&s, operand);
+        } else {
+            char op1[MAX], op2[MAX], expr[MAX];
+            strcpy(op2, pop(&s));
+            strcpy(op1, pop(&s));
+            sprintf(expr, "(%s%c%s)", op1, token, op2);
+            push(&s, expr);
+        }
+    }
+    strcpy(infix, pop(&s));
+}
+
