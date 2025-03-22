@@ -152,5 +152,64 @@ void postfixToPrefix(char *postfix, char *prefix) {
     infixToPrefix(infix, prefix);
 }
 
+int main() {
+    char infix[MAX], postfix[MAX], prefix[MAX];
+    char option;
+
+    printf("Silakan pilih fungsi yang akan digunakan:\n\n");
+    printf(" A. Infix ke Postfix\n");
+    printf(" B. Postfix ke Infix\n");
+    printf(" C. Infix ke Prefix\n");
+    printf(" D. Prefix ke Infix\n");
+    printf(" E. Prefix ke Postfix\n");
+    printf(" F. Postfix ke Prefix\n");
+    printf("Masukkan opsi: ");
+    
+    scanf(" %c", &option); 
+
+    if (option == 'A' || option == 'a') {
+        printf("Masukkan ekspresi Infix: ");
+        scanf("%s", infix);
+        infixToPostfix(infix, postfix);
+        printf("Postfix: %s\n", postfix);
+    } 
+    else if (option == 'B' || option == 'b') {
+        printf("Masukkan ekspresi Postfix: ");
+        scanf("%s", postfix);
+        postfixToInfix(postfix, infix);
+        printf("Infix: %s\n", infix);
+    } 
+    else if (option == 'C' || option == 'c') {
+        printf("Masukkan ekspresi Infix: ");
+        scanf("%s", infix);
+        infixToPrefix(infix, prefix);
+        printf("Prefix: %s\n", prefix);
+    } 
+    else if (option == 'D' || option == 'd') {
+        printf("Masukkan ekspresi Prefix: ");
+        scanf("%s", prefix);
+        prefixToInfix(prefix, infix);
+        printf("Infix: %s\n", infix);
+    } 
+    else if (option == 'E' || option == 'e') {
+        printf("Masukkan ekspresi Prefix: ");
+        scanf("%s", prefix);
+        prefixToPostfix(prefix, postfix);
+        printf("Postfix: %s\n", postfix);
+    } 
+    else if (option == 'F' || option == 'f') {
+        printf("Masukkan ekspresi Postfix: ");
+        scanf("%s", postfix);
+        postfixToPrefix(postfix, prefix);
+        printf("Prefix: %s\n", prefix);
+    } 
+    else {
+        printf("Opsi tidak valid. Silakan coba lagi.\n");
+    }
+
+    return 0;
+}
+
+
 
 
