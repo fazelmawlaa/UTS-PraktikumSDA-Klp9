@@ -28,3 +28,13 @@ void push(Stack *s, char *str) {
         strcpy(s->items[++(s->top)], str);
     }
 }
+
+char* pop(Stack *s) {
+    if (!isEmpty(s)) {
+        return s->items[(s->top)--];
+    }
+    return "";
+}
+char* peek(Stack *s) {
+    return s->items[s->top];
+}
