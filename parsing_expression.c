@@ -39,9 +39,6 @@ char* peek(Stack *s) {
     return s->items[s->top];
 }
 
-char* peek(Stack *s) {
-    return s->items[s->top];
-}
 
 int priority(char c) {
     switch (c) {
