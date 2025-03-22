@@ -63,3 +63,32 @@ void strrev(char *str) {
     }
 }
 
+void infixToPostfix(char *infix, char *postfix) {
+    Stack s;
+    init(&s);
+    int i, j = 0;
+    for (i = 0; infix[i] != '\0'; i++) {
+        char token = infix[i];
+        if (isalnum(token)) {
+            postfix[j++] = token;
+        } else if (token == '(') {
+            push(&s, "(");
+        } else if (token == ')') {
+            while (!isEmpty(&s) && strcmp(peek(&s), "(") != 0) {
+                postfix[j++] = pop(&s)[0];
+            }
+            pop(&s);
+        } else {
+            while (!isEmpty(&s) && priority(peek(&s)[0]) >= priority(token)) {
+                postfix[j++] = pop(&s)[0];
+            }
+            char op[2] = {token, '\0'};
+            push(&s, op);
+        }
+    }
+    while (!isEmpty(&s)) {
+        postfix[j++] = pop(&s)[0];
+    }
+    postfix[j] = '\0';
+}
+
