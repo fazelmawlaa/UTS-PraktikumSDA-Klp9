@@ -38,3 +38,17 @@ char* pop(Stack *s) {
 char* peek(Stack *s) {
     return s->items[s->top];
 }
+
+char* peek(Stack *s) {
+    return s->items[s->top];
+}
+
+int priority(char c) {
+    switch (c) {
+        case '+': case '-': return 1;
+        case '*': case '/': return 2;
+        case '^': return 3;
+        default: return -1;
+    }
+}
+
