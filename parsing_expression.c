@@ -121,3 +121,24 @@ void infixToPrefix(char *infix, char *prefix) {
     strrev(prefix);
 }
 
+void prefixToInfix(char *prefix, char *infix) {
+    Stack s;
+    init(&s);
+    strrev(prefix);
+    for (int i = 0; prefix[i] != '\0'; i++) {
+        char token = prefix[i];
+        if (isalnum(token)) {
+            char operand[2] = {token, '\0'};
+            push(&s, operand);
+        } else {
+            char op1[MAX], op2[MAX], expr[MAX];
+            strcpy(op1, pop(&s));
+            strcpy(op2, pop(&s));
+            sprintf(expr, "(%s%c%s)", op1, token, op2);
+            push(&s, expr);
+        }
+    }
+    strcpy(infix, pop(&s));
+}
+
+
