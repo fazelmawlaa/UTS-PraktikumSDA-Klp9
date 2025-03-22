@@ -111,3 +111,13 @@ void postfixToInfix(char *postfix, char *infix) {
     strcpy(infix, pop(&s));
 }
 
+void infixToPrefix(char *infix, char *prefix) {
+    strrev(infix);
+    for (int i = 0; infix[i] != '\0'; i++) {
+        if (infix[i] == '(') infix[i] = ')';
+        else if (infix[i] == ')') infix[i] = '(';
+    }
+    infixToPostfix(infix, prefix);
+    strrev(prefix);
+}
+
