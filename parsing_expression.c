@@ -141,4 +141,16 @@ void prefixToInfix(char *prefix, char *infix) {
     strcpy(infix, pop(&s));
 }
 
+void prefixToPostfix(char *prefix, char *postfix) {
+    char infix[MAX];
+    prefixToInfix(prefix, infix);
+    infixToPostfix(infix, postfix);
+}
+void postfixToPrefix(char *postfix, char *prefix) {
+    char infix[MAX];
+    postfixToInfix(postfix, infix);
+    infixToPrefix(infix, prefix);
+}
+
+
 
